@@ -1,4 +1,4 @@
-![logo](logo.png)
+![logo](logo.svg)
 
 # 前端面试宝典
 
