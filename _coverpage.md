@@ -9,6 +9,7 @@
 * [Javascript](pages/Javascript)
 * [Vue](pages/Vue)
 * [React](pages/React)
+* [工具](pages/tool)
 
 [emoji](https://gist.github.com/rxaviers/7360908)
 [码云](https://gitee.com/chengbenchao/interview)
