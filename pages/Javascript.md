@@ -118,6 +118,10 @@ search
 
 ##### 13.字符串的常用方法
 
+##### 14.cookie,LocalStorage,sessionStorage的区别
+
+##### 15.如何实现事件监听(javascript,jquery实现)
+
 >#### **徐保山组**
 
 ##### 1.Javascript中的定时器有哪些？他们的区别及用法是什么?(丁美丽)
