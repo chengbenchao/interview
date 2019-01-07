@@ -175,3 +175,19 @@ search
 ##### 4.取数组中的最大值,最小值
 
 ##### 5.数组取反
+
+##### 6.如何判断质数
+
+~~~
+function isPrime(num){
+            for(var i=2;i<num;i++){
+                if(num%i==0){
+                    return false
+                }else{
+                    return true;
+                }
+            }
+            
+}
+~~~
+
