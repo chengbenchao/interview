@@ -1,6 +1,6 @@
 >#### **李姚组**
 
-##### 1.js数据类型的分类(李姚)
+##### 1.js数据类型的分类
 
 - 1.1基本类型String,Number,Boolean,Null,Undefined
 
