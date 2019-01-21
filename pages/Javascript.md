@@ -24,7 +24,6 @@ b.age = 21;
 console.log(a.age) //21
 ```
 ##### 2.js判断数据类型(判断数据类型是否为数组)
-## 判断一个变量是否为数组
 - 2.1 typeof
     - typeof 返回类型有7种：string number boolean undefined Function Object Symbol(es6)
     - typeof 不能判断数组类型
