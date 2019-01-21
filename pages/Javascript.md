@@ -23,6 +23,7 @@ var b = a;
 b.age = 21;
 console.log(a.age) //21
 ```
+
 ##### 2.js判断数据类型(判断数据类型是否为数组)
 - 2.1 typeof
     - typeof 返回类型有7种：string number boolean undefined Function Object Symbol(es6)
@@ -60,7 +61,7 @@ Array.isArray(state.car) //true
 - substr(index, length)截取从index开始，长度为length的字符串
 - substring(index, endIndex)从index开始，到endIndex结束，不包括endIndex
 
-#### 5.遍历数组的方法
+##### 5.遍历数组的方法
 - 1.for 循环
 ```javascript
 for(var i=1; i<5; i++) {
@@ -134,13 +135,17 @@ var b = concat([para1, para2]) 可直接将数组添加，不需展开语法
 var n = arr.concat(5, 6);
 console.log(n);  //1, 2, 3, 4, 5, 6
 ```
+
 - 6.2 删除
+
 1. shift()从头删除
+
 ```javascript
 arr.shift();
 ```
 2. pop()从后删除
 - 6.3 修改
+
 splice(index, howmany, item)
 index: 从哪里开始
 howmany：删除几个，howmany为0就会变成添加
@@ -151,6 +156,7 @@ arr.splice(1, 2, 1, 1);
 console.log(arr); //1, 1, 1, 4
 ```
 - 6.4 查询
+
 查询数组中值的下标
 arr.indexOf(value)
 ```javascript
@@ -158,6 +164,7 @@ var index = arr.indexOf(2);
 console.log(index);  //1
 ```
 - 6.5 截取
+
 slice(first, last) 
 左闭右开，first包括，last不包括，没有last则从第一位到最后一位
 ```javascript
