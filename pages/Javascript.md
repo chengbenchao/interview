@@ -55,8 +55,117 @@ Array.isArray(state.car) //true
 ##### 3.js有那几种情况下为false?
 五种：NaN,null,undefined,0,""
 
-##### 3.
+##### 4.substr,substring,slice的区别
+- substr和substring截取字符串, slice截取数组
+- substr(index, length)截取从index开始，长度为length的字符串
+- substring(index, endIndex)从index开始，到endIndex结束，不包括endIndex
 
+#### 5.遍历数组的方法
+- 1.for 循环
+```javascript
+for(var i=1; i<5; i++) {
+    console.log(i); //1, 2, 3, 4
+}
+```
+- 2.for in 遍历下标，也可以遍历 Object 的 key 值
+```javascript
+// 遍历数组下标
+for(var i in arr) {
+    console.log(i);
+}
+// 遍历对象 key 值
+var obj = {
+  name: 'jack',
+   age: '18'
+}
+for (var i in obj) {
+  console.log(i) // name, age
+}
+```
+- 3.for of 遍历值，但不能遍历 Object 的 值
+- 4.arr.forEach, 遍历每一项以及下标
+```javascript
+var arr = [1, 2, 3];
+arr.forEach((item, index)=>{
+    console.log(item);
+    console.log(index);
+})
+```
+- 5.Array.from(arr, (value, index)=>{})
+```javascript
+Array.from(arr, function(value, index){
+    console.log(value);
+    console.log(index);
+})
+```
+- 6.map
+```javascript
+arr.map((item, index)=>{
+    console.log(index);
+})
+```
+##### 6.数组的增删查改
+- 6.1 添加
+
+> 改变数组式增加：
+
+1. push(para1, para2) ：从后添加
+
+2. unshift(para1, para2)：从头增加
+
+3. arr.splice(index, howmany, item)：定点添加-->当howmany修改变为0，即变成定点添加. (splice 读 /ai/)
+```javascript
+var arr = [1, 2, 3, 4];
+arr.push(5, 6);
+arr.push([5, 6]) //生成二维数组 1, 2, 3, 4, [5, 6]
+arr.push(...[5, 6]) //把5，6加入  `...`是展开语法，属于es6
+console.log(arr);  //1, 2, 3, 4, 5, 6
+```
+```javascript
+arr.splice(0, 0, 9);  //往第一项前添加
+console.log(arr);   //9, 1, 2, 3, 4
+```
+> 增加：不改变数组内容，创建一个新的数组
+
+var b = concat(para1, para2)
+
+var b = concat([para1, para2]) 可直接将数组添加，不需展开语法
+```javascript
+var n = arr.concat(5, 6);
+console.log(n);  //1, 2, 3, 4, 5, 6
+```
+- 6.2 删除
+1. shift()从头删除
+```javascript
+arr.shift();
+```
+2. pop()从后删除
+- 6.3 修改
+splice(index, howmany, item)
+index: 从哪里开始
+howmany：删除几个，howmany为0就会变成添加
+item：在删除的地方添加的值
+```javascript
+var arr = [1, 2, 3, 4];
+arr.splice(1, 2, 1, 1);
+console.log(arr); //1, 1, 1, 4
+```
+- 6.4 查询
+查询数组中值的下标
+arr.indexOf(value)
+```javascript
+var index = arr.indexOf(2);
+console.log(index);  //1
+```
+- 6.5 截取
+slice(first, last) 
+左闭右开，first包括，last不包括，没有last则从第一位到最后一位
+```javascript
+var arr = [1, 2, 3, 4]
+// var b = arr.slice(1, 3); //2, 3
+var b = arr.slice(1); //2, 3, 4
+console.log(b);
+```
 ##### 4.JS的内存机制与垃圾回收机制
 
 ##### 5.JS中的内置函数
@@ -222,4 +331,7 @@ function isPrime(num){
             
 }
 ~~~
+bbb
+test
+aaa
 
