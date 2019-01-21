@@ -16,21 +16,47 @@ console.log(b);//结果是1。b不会因为a改变而改变
 
   1.引用类型的值被保存在堆内存中。
   2.包含引用类型值的变量实际上包含的并不是对象本身,而是一个指向该对象的指针。
-  3.引用类型的复制仅仅是将地址复制给对方，穿的是地址
+  3.引用类型的复制仅仅是将地址复制给对方，传的是地址
 ```javascript
 var a = {age:20};
 var b = a;
 b.age = 21;
 console.log(a.age) //21
 ```
+##### 2.js判断数据类型(判断数据类型是否为数组)
+## 判断一个变量是否为数组
+- 2.1 typeof
+    - typeof 返回类型有7种：string number boolean undefined Function Object Symbol(es6)
+    - typeof 不能判断数组类型
+    - typeof 返回的值为字符串，
+```js
+alert(typeof  a  ==  "string") -->  true
+alert(typeof  a  ==  String) -->  false
+```
+```js
+function  test(){}
+console.log(typeof  1); // number
+console.log(typeof  test); // function
+console.log(typeof  "yunxi"); // string
+console.log(typeof  undefined); // undefined
+```
+- 2.2 instanceof
+```js
+console.log([] instanceof  Array); // true
+console.log(/\d+/g  instanceof  Array); // false
+```
+- 2.3 constructor
+```js
+console.log(arr.constructor  ==  Array); // true
+```
+- 2.4 Array.isArray(数组)
+```js
+Array.isArray(state.car) //true
+```
+##### 3.js有那几种情况下为false?
+五种：NaN,null,undefined,0,""
 
-##### 2.js有那几种情况下为false(李姚)
-
-~~~javascript
-NaN,null,undefined,0,""
-~~~
-
-##### 3.javascript的内置对象(李姚)
+##### 3.
 
 ##### 4.JS的内存机制与垃圾回收机制
 
