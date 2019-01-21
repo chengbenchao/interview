@@ -53,7 +53,9 @@ console.log(arr.constructor  ==  Array); // true
 ```js
 Array.isArray(state.car) //true
 ```
+
 ##### 3.js有那几种情况下为false?
+
 五种：NaN,null,undefined,0,""
 
 ##### 4.substr,substring,slice的区别
@@ -105,7 +107,9 @@ arr.map((item, index)=>{
     console.log(index);
 })
 ```
+
 ##### 6.数组的增删查改
+
 - 6.1 添加
 
 > 改变数组式增加：
