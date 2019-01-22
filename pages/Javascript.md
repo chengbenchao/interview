@@ -112,7 +112,7 @@ arr.map((item, index)=>{
 
 1.添加
 
-> 改变数组式增加：
+>改变数组式增加：
 
 1. push(para1, para2) ：从后添加
 
@@ -130,7 +130,8 @@ console.log(arr);  //1, 2, 3, 4, 5, 6
 arr.splice(0, 0, 9);  //往第一项前添加
 console.log(arr);   //9, 1, 2, 3, 4
 ```
-> 增加：不改变数组内容，创建一个新的数组
+
+>增加：不改变数组内容，创建一个新的数组
 
 var b = concat(para1, para2)
 
@@ -221,8 +222,10 @@ console.log(test);
 
 ##### 8.Promise的用法
 解释：Promise 是一个构造函数，它可以用来解决回调地狱，封装 ajax 请求
+
 用法：如封装$.ajax
-```js
+
+```javascript
 // 1. 创建一个方法，其中 return 出 Promise 对象
 // 2. Promise 对象接受一个函数，其中接收 resolve 和 resject 两个参数
 function promise(url) {
@@ -248,7 +251,8 @@ promise(url).then(res => {
 }, err => {
     console.log(err);  // 如果请求失败，则打印 err
 })
-```3
+```
+
 
 
 ##### 4.JS的内存机制与垃圾回收机制
