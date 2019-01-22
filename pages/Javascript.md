@@ -54,7 +54,7 @@ console.log(arr.constructor  ==  Array); // true
 Array.isArray(state.car) //true
 ```
 
-##### 3.js有那几种情况下为false?
+##### 3.js哪几种情况为false
 
 五种：NaN,null,undefined,0,""
 
@@ -110,7 +110,7 @@ arr.map((item, index)=>{
 
 ##### 6.数组的增删查改
 
-- 6.1 添加
+1.添加
 
 > 改变数组式增加：
 
@@ -140,7 +140,7 @@ var n = arr.concat(5, 6);
 console.log(n);  //1, 2, 3, 4, 5, 6
 ```
 
-- 6.2 删除
+2.删除
 
 1. shift()从头删除
 
@@ -148,7 +148,8 @@ console.log(n);  //1, 2, 3, 4, 5, 6
 arr.shift();
 ```
 2. pop()从后删除
-- 6.3 修改
+
+3.修改
 
 splice(index, howmany, item)
 index: 从哪里开始
@@ -159,7 +160,7 @@ var arr = [1, 2, 3, 4];
 arr.splice(1, 2, 1, 1);
 console.log(arr); //1, 1, 1, 4
 ```
-- 6.4 查询
+4.查询
 
 查询数组中值的下标
 arr.indexOf(value)
@@ -167,7 +168,7 @@ arr.indexOf(value)
 var index = arr.indexOf(2);
 console.log(index);  //1
 ```
-- 6.5 截取
+5.截取
 
 slice(first, last) 
 左闭右开，first包括，last不包括，没有last则从第一位到最后一位
@@ -177,6 +178,79 @@ var arr = [1, 2, 3, 4]
 var b = arr.slice(1); //2, 3, 4
 console.log(b);
 ```
+##### 7.深拷贝的几种方式
+>深拷贝数组
+
+1.展开语法
+```js
+var arr = [1, 2, 3, 4, 5];
+var temp = [...arr];
+```
+2.slice 和 concat
+```js
+var temp = arr.slice(0);
+```
+```js
+var temp = [].concat(arr);
+```
+3.forEach 单个拷贝
+```js
+arr.forEach(ele => {
+    temp.push(ele)
+}
+```
+>深拷贝对象
+
+1.展开语法
+```js
+var obj = {
+    "name": 'xu',
+    "age": 23
+}
+var test = {...obj};
+console.log(test);
+```
+2. for in 遍历
+```js
+var test = {};
+for(var i in obj) {
+    test[i] = obj[i];
+}
+console.log(test);
+```
+
+##### 8.Promise的用法
+解释：Promise 是一个构造函数，它可以用来解决回调地狱，封装 ajax 请求
+用法：如封装$.ajax
+```js
+// 1. 创建一个方法，其中 return 出 Promise 对象
+// 2. Promise 对象接受一个函数，其中接收 resolve 和 resject 两个参数
+function promise(url) {
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url,
+            type: "get",
+            dataType: "jsonp",
+            success: function (res) {
+                resolve(res);  // resolve 处理异步操作成功的结果
+            },
+            error: function (err) {
+                reject(err)  // reject 处理异步操作失败的结果
+            }
+        })
+    })
+}
+
+// 3. 使用封装好的 promise 方法
+var url = 'https://douban.uieee.com/v2/movie/top250';
+promise(url).then(res => {
+    console.log(res);  // 如果请求成功，则打印 res
+}, err => {
+    console.log(err);  // 如果请求失败，则打印 err
+})
+```3
+
+
 ##### 4.JS的内存机制与垃圾回收机制
 
 ##### 5.JS中的内置函数
