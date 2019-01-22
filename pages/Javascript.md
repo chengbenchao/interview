@@ -211,7 +211,7 @@ var obj = {
 var test = {...obj};
 console.log(test);
 ```
-2. for in 遍历
+2.for in 遍历
 ```js
 var test = {};
 for(var i in obj) {
@@ -265,6 +265,7 @@ function Person(name, age) {
 var xu = new Person('xu', 19);
 ```
 2.原型
+
 构造函数的`prototype`和实例的`__proto__`指向原型, 原型上有构造器`constructor`和定义的方法
 ```javascript
 Person.prototype == xu.__proto__ == 原型
@@ -280,6 +281,7 @@ console.log(jack.add(1, 2)) // 3
 // Person.prototype.add = function(a, b)
 ```
 4.原型链
+
 读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。如果直到最顶层的Object.prototype还是找不到，则返回undefined。这个过程就叫原型链
 
 ##### 10.继承
@@ -302,7 +304,7 @@ VipUser.prototype.say = function() {
 console.log(jack);
 jack.say(); 
 ```
-### ES6 中的继承
+2.ES6 中的继承
 ```js
 function User(name, age){
     this.name = name;
