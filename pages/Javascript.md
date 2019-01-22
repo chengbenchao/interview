@@ -253,8 +253,74 @@ promise(url).then(res => {
 })
 ```
 
+##### 9.构造函数，原型，原型链
+1.构造函数与实例
+```javascript
+// 构造函数
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+// xu 是通过构造函数 new 出的一个实例
+var xu = new Person('xu', 19);
+```
+2.原型
+构造函数的`prototype`和实例的`__proto__`指向原型, 原型上有构造器`constructor`和定义的方法
+```javascript
+Person.prototype == xu.__proto__ == 原型
+```
+3.在原型上新增一个方法
+```javascript
+var jack = new Person('jack', 18);
+jack.__proto__.add = function(a, b) {
+    return a + b;
+}
+console.log(jack.add(1, 2)) // 3
+// 或者通过构造函数找到原型，在上面新增
+// Person.prototype.add = function(a, b)
+```
+4.原型链
+读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。如果直到最顶层的Object.prototype还是找不到，则返回undefined。这个过程就叫原型链
 
-
+##### 10.继承
+1.ES5中的继承
+```js
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+function VipUser(name, age, level){
+    // User.call(this, name, age);
+    User.apply(this, [name, age]);
+    this.level = level;
+}
+var jack = new VipUser('jack', 23, 13);
+// 在VipUser 原型上定义一个say方法
+VipUser.prototype.say = function() {
+    console.log(this.name);
+}
+console.log(jack);
+jack.say(); 
+```
+### ES6 中的继承
+```js
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+class VipUser extends User {
+    constructor(name, age, level) {
+        super(name, age);
+        this.level = level;
+    }
+    say() {
+        console.log(this.name);
+    }
+}
+var jack = new VipUser('jack', 23, 12);
+console.log(jack);
+jack.say();
+```
 ##### 4.JS的内存机制与垃圾回收机制
 
 ##### 5.JS中的内置函数
