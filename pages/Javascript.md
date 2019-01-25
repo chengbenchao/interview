@@ -53,7 +53,9 @@ console.log(arr.constructor  ==  Array); // true
 ```js
 Array.isArray(state.car) //true
 ```
-##### 3.js有那几种情况下为false?
+
+##### 3.js哪几种情况为false
+
 五种：NaN,null,undefined,0,""
 
 ##### 4.substr,substring,slice的区别
@@ -105,10 +107,12 @@ arr.map((item, index)=>{
     console.log(index);
 })
 ```
-##### 6.数组的增删查改
-- 6.1 添加
 
-> 改变数组式增加：
+##### 6.数组的增删查改
+
+1.添加
+
+>改变数组式增加：
 
 1. push(para1, para2) ：从后添加
 
@@ -126,7 +130,8 @@ console.log(arr);  //1, 2, 3, 4, 5, 6
 arr.splice(0, 0, 9);  //往第一项前添加
 console.log(arr);   //9, 1, 2, 3, 4
 ```
-> 增加：不改变数组内容，创建一个新的数组
+
+>增加：不改变数组内容，创建一个新的数组
 
 var b = concat(para1, para2)
 
@@ -136,7 +141,7 @@ var n = arr.concat(5, 6);
 console.log(n);  //1, 2, 3, 4, 5, 6
 ```
 
-- 6.2 删除
+2.删除
 
 1. shift()从头删除
 
@@ -144,7 +149,8 @@ console.log(n);  //1, 2, 3, 4, 5, 6
 arr.shift();
 ```
 2. pop()从后删除
-- 6.3 修改
+
+3.修改
 
 splice(index, howmany, item)
 index: 从哪里开始
@@ -155,7 +161,7 @@ var arr = [1, 2, 3, 4];
 arr.splice(1, 2, 1, 1);
 console.log(arr); //1, 1, 1, 4
 ```
-- 6.4 查询
+4.查询
 
 查询数组中值的下标
 arr.indexOf(value)
@@ -163,7 +169,7 @@ arr.indexOf(value)
 var index = arr.indexOf(2);
 console.log(index);  //1
 ```
-- 6.5 截取
+5.截取
 
 slice(first, last) 
 左闭右开，first包括，last不包括，没有last则从第一位到最后一位
@@ -172,6 +178,150 @@ var arr = [1, 2, 3, 4]
 // var b = arr.slice(1, 3); //2, 3
 var b = arr.slice(1); //2, 3, 4
 console.log(b);
+```
+##### 7.深拷贝的几种方式
+>深拷贝数组
+
+1.展开语法
+```js
+var arr = [1, 2, 3, 4, 5];
+var temp = [...arr];
+```
+2.slice 和 concat
+```js
+var temp = arr.slice(0);
+```
+```js
+var temp = [].concat(arr);
+```
+3.forEach 单个拷贝
+```js
+arr.forEach(ele => {
+    temp.push(ele)
+}
+```
+>深拷贝对象
+
+1.展开语法
+```js
+var obj = {
+    "name": 'xu',
+    "age": 23
+}
+var test = {...obj};
+console.log(test);
+```
+2.for in 遍历
+```js
+var test = {};
+for(var i in obj) {
+    test[i] = obj[i];
+}
+console.log(test);
+```
+
+##### 8.Promise的用法
+解释：Promise 是一个构造函数，它可以用来解决回调地狱，封装 ajax 请求
+
+用法：如封装$.ajax
+
+```javascript
+// 1. 创建一个方法，其中 return 出 Promise 对象
+// 2. Promise 对象接受一个函数，其中接收 resolve 和 resject 两个参数
+function promise(url) {
+    return new Promise(function (resolve, reject) {
+        $.ajax({
+            url,
+            type: "get",
+            dataType: "jsonp",
+            success: function (res) {
+                resolve(res);  // resolve 处理异步操作成功的结果
+            },
+            error: function (err) {
+                reject(err)  // reject 处理异步操作失败的结果
+            }
+        })
+    })
+}
+
+// 3. 使用封装好的 promise 方法
+var url = 'https://douban.uieee.com/v2/movie/top250';
+promise(url).then(res => {
+    console.log(res);  // 如果请求成功，则打印 res
+}, err => {
+    console.log(err);  // 如果请求失败，则打印 err
+})
+```
+
+##### 9.构造函数，原型，原型链
+1.构造函数与实例
+```javascript
+// 构造函数
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+// xu 是通过构造函数 new 出的一个实例
+var xu = new Person('xu', 19);
+```
+2.原型
+
+构造函数的`prototype`和实例的`__proto__`指向原型, 原型上有构造器`constructor`和定义的方法
+```javascript
+Person.prototype == xu.__proto__ == 原型
+```
+3.在原型上新增一个方法
+```javascript
+var jack = new Person('jack', 18);
+jack.__proto__.add = function(a, b) {
+    return a + b;
+}
+console.log(jack.add(1, 2)) // 3
+// 或者通过构造函数找到原型，在上面新增
+// Person.prototype.add = function(a, b)
+```
+4.原型链
+
+读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。如果直到最顶层的Object.prototype还是找不到，则返回undefined。这个过程就叫原型链
+
+##### 10.继承
+1.ES5中的继承
+```js
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+function VipUser(name, age, level){
+    // User.call(this, name, age);
+    User.apply(this, [name, age]);
+    this.level = level;
+}
+var jack = new VipUser('jack', 23, 13);
+// 在VipUser 原型上定义一个say方法
+VipUser.prototype.say = function() {
+    console.log(this.name);
+}
+console.log(jack);
+jack.say(); 
+```
+2.ES6 中的继承
+```js
+function User(name, age){
+    this.name = name;
+    this.age = age;
+}
+class VipUser extends User {
+    constructor(name, age, level) {
+        super(name, age);
+        this.level = level;
+    }
+    say() {
+        console.log(this.name);
+    }
+}
+var jack = new VipUser('jack', 23, 12);
+console.log(jack);
+jack.say();
 ```
 ##### 4.JS的内存机制与垃圾回收机制
 
