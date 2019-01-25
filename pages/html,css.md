@@ -1,4 +1,4 @@
->#### **李姚组**
+>####  **李姚组**
 
 ##### 1.html标签的分类(李姚)
 ~~~
@@ -157,9 +157,63 @@ margin:auto;
 }
 ```
 
-##### 4.display:none和visibility:hidden之前有什么区别 (李许怡安)
+##### 4.display:none和visibility:hidden之前有什么区别
+
+- 相同点：它们都能让元素不可见
+
+- 区别：
+  - display:none;会让元素完全从渲染树中消失，渲染的时候**不占据任何空间**；
+    visibility: hidden;不会让元素从渲染树消失，渲染师元素继续**占据空间，只是内容不可见**
+  - display: none;是**非继承**属性，子孙节点消失由于元素从渲染树消失造成，通过修改子孙节点属性无法显示；
+    visibility: hidden;是**继承属性**，子孙节点消失由于继承了hidden，通过设置visibility: visible;可以让子孙节点显示
+
+```html
+    <div class="border">
+        <div class="display">
+            <p>display</p>
+        </div>
+        <div class="visibility">
+            <p>visibility</p>
+        </div>
+    </div>
+    
+    <style>
+        .display {
+            display: none;
+            width: 100px;
+            height: 100px;
+            background: palevioletred;
+        }
+        .visibility {
+            visibility: hidden;
+            width: 100px;
+            height: 100px;
+            background: darkslateblue;
+        }
+        .visibility>p{
+            visibility: visible;
+        }
+        .border{
+            border: 3px solid #ccc;
+        }
+    </style>
+```
+
+(修改常规流中元素的display通常会造成文档重排。修改visibility属性只会造成本元素的重绘。)
+(读屏器不会读取display: none;元素内容；会读取visibility: hidden;元素内容)
 
 ##### 5.position哪些值可以设置,z-index的权重(肖茗君)
+
+| absolute | 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 |
+| -------- | :----------------------------------------------------------- |
+| fixed    | 生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。 |
+| relative | 生成相对定位的元素，相对于其正常位置进行定位。因此，"left:20" 会向元素的 LEFT 位置添加 20 像素。 |
+| static   | 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。 |
+| inherit  | 规定应该从父元素继承 position 属性的值。                     |
+
+ relative（相对定位）：定位原点是元素本身所在位置；
+
+ absolute（绝对定位）：定位原点是离自己这一级元素最近的一级position设置为absolute或者relative的父元素的左上角为原点的
 
 ##### 6.before:和before::有什么区别
 
