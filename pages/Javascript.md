@@ -1,494 +1,1049 @@
->#### 一：ECMAScript: JS语言标准
+##### 1、数组的方法
 
-##### 1.js数据类型的分类
+```
+增加：
+    unshift() //从数组的前面增加
+    push() // 从数组的最后面增加一个值,可以一次性添加多个
+    splice(index,0,parmas) // 从index的前面增加 
+    concat() //拼接两个数组,但是不能改变原数组的结构
+删除：
+    shift() //从前面删除
+    pop() //从后面删除
+    splice(index,howmany)  //index从哪个下标开始,howmany删除多少个
+查询：
+	indexOf()  
+    includes() -->判断数组是否包含某个值
+    slice()
+    find() -->找不到就返回undefind
+    findIndex()
+修改：
+ 	splice()
+遍历：	
+    for in
+    map()
+    forEach()
+    every()
+    some()
+    from()
+    filter()
+    
+截取:
+	slice()
+将数组拼接成字符串：
+	join()
+排序：
+	sort()	
+求和：
+	reduce()
+反转：
+	reverse()
+求最值：
+    Math.min(...arr)
+    Math.max(...arr)
 
-- 1.1 五种基本类型：`String`,`Number`,`Boolean`,`Null`,`Undefined`. (ES6新增了一种基本类型：`Sysmbol`)
-
-```javascript
-1.基本类型的值在内存中占据固定大小的空间,因此被保存在栈内存中
-2.基本类型的复制被称为深拷贝，传的是值
-var a = 1;
-var b = a;
-a = 2;
-console.log(b);//结果是1。b不会因为a改变而改变
-```
-- 1.2 三种引用类型：`Object`,`Array`,`Function`
-
-  1.引用类型的值被保存在堆内存中。
-  2.包含引用类型值的变量实际上包含的并不是对象本身,而是一个指向该对象的指针。
-  3.引用类型的复制仅仅是将地址复制给对方，传的是地址
-```javascript
-var a = {age:20};
-var b = a;
-b.age = 21;
-console.log(a.age) //21
-```
-
-##### 2.js判断数据类型(判断数据类型是否为数组)
-- 2.1 typeof
-    - typeof 返回类型有7种：string number boolean undefined Function Object Symbol(es6)
-    - typeof 不能判断数组类型
-    - typeof 返回的值为字符串，
-```js
-alert(typeof  a  ==  "string") -->  true
-alert(typeof  a  ==  String) -->  false
-```
-```js
-function  test(){}
-console.log(typeof  1); // number
-console.log(typeof  test); // function
-console.log(typeof  "yunxi"); // string
-console.log(typeof  undefined); // undefined
-```
-- 2.2 instanceof
-```js
-console.log([] instanceof  Array); // true
-console.log(/\d+/g  instanceof  Array); // false
-```
-- 2.3 constructor
-```js
-console.log(arr.constructor  ==  Array); // true
-```
-- 2.4 Array.isArray(数组)
-```js
-Array.isArray(state.car) //true
 ```
 
-##### 3.js哪几种情况为false
+##### 2、JS哪几种情况输出false
 
-五种：NaN,null,undefined,0,""
+```
+NaN，""，null，undefined，0
 
-##### 4.substr,substring,slice的区别
-- substr和substring截取字符串, slice截取数组
-- substr(index, length)截取从index开始，长度为length的字符串
-- substring(index, endIndex)从index开始，到endIndex结束，不包括endIndex
+```
 
-##### 5.遍历数组的方法
-- 1.for 循环
-```javascript
-for(var i=1; i<5; i++) {
-    console.log(i); //1, 2, 3, 4
+##### 3、jQuery ajax传参
+
+```
+url:"",
+type:"get",
+data:,
+success:,
+error:
+
+```
+
+##### 4、break、continue区别
+
+```
+break:结束整个循环；
+continue：跳过某次循环；
+```
+
+##### 5、关于声明提前
+
+```
+javaScript在执行代码的时候会将所有的var声明的变量，放在作用域的顶部集中创建,赋值留在原地
+
+```
+
+##### 6、==和===的区别
+
+```
+== 比较时会先进行类型转换，然后比较转换值; 比如：2 == '2' // true
+=== 不会进行类型转换，先比较类型，然后比较值，若类型不相同则直接false；2 === '2' // false
+```
+
+##### 7、JS中常用事件
+
+```
+鼠标事件：
+    onClick(鼠标单击)，ondbclick(鼠标双击)，
+    onmousedown(鼠标按下未抬起)，onmouseup(鼠标抬起)，
+    onmousemove(鼠标移动)，onmouseover(鼠标移入)，onmouseout(鼠标移出)，
+    onmouseenter(鼠标移入)，onmouseleave(鼠标移出)
+    onmouseover与onmouseenter的区别：前者若有子级元素，它会把事件传递给子级元素,而后者不会。
+键盘事件：
+    onkeydown(键盘按下，键盘未抬起事件会一直触发)
+    onkeyup(键盘抬起)
+    onkeypress(键盘按下数字键货子母键触发，功能键除外(上下左右，ctrl，shift，alt))
+焦点事件：
+    onfocus(有焦点的元素获取到焦点时触发，用tab键也会触发这个事件)
+    onblur(有焦点的元素失去焦点时触发)
+```
+
+##### 8、call、apply和bind的区别
+
+```
+call和apply改变了函数的this上下文后便执行该函数,而bind则是返回改变了上下文后的一个函数;
+call,apply的区别：
+他们俩之间的差别在于参数的区别，call和apply的第一个参数都是要改变上下文的对象，而call从第二个参数开始以参数列表的形式展现，apply则是把除了改变上下文对象的参数放在一个数组里面作为它的第二个参数
+
+```
+
+##### 9、同步和异步
+
+```
+同步：客户端向服务器发送请求的过程中，用户不可以进行其他操作 
+异步：客户端向服务器发送请求的过程中，用户可以进行其他操作
+
+```
+
+##### 11、什么是同源策略
+
+```
+同源策略：具有相同的协议(http/https)、域名、端口号为同源；
+
+```
+
+##### 12、什么是跨域、如何解决跨域
+
+```
+跨域：协议(http/https)、域名、端口号只要有一个不一样就是跨域；
+解决跨域：
+    跨域资源共享（CORS）---需后端处理；
+    服务器转发代理---请求同源地址的代理接口，服务器访问跨域接口并返回数据；
+    jsonp---利用script标签不受同源策略的限制特征，在src内写入请求地址，末尾回调处理数据：
+    <script type="text/javascript" src="http://localhost/Service.ashx?callback=jsonpCallback" />
+
+```
+
+##### 13、什么是回调函数
+
+```
+把函数作为一个参数，传递给另外一个函数
+
+```
+
+##### 14、重载和重写
+
+```
+js的方法是不能重载的
+方法的重写利用方法的参数数组 anguments对象来实现的
+
+```
+
+##### 15、事件冒泡、捕获 	阻止事件冒泡
+
+```
+事件冒泡：事件开始时由最具体的元素接收，然后逐级向上传播到较为不具体的节点。
+事件捕获：是指不太具体的元素更早地接收到事件，然后向下传播到最具体的节点；也就是与冒泡过程相反。
+阻止事件冒泡：event.stoppropagation()阻止事件冒泡
+
+```
+
+##### 16、什么是ajax
+
+```
+AJAX 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术
+
+```
+
+##### 17、es6新特性
+
+```
+不一样的变量声明：const和let;
+模板字符串;
+箭头函数;
+函数的参数默认值;
+Spread / Rest 操作符;
+二进制和八进制字面量;
+对象和数组解构;
+Set和Map
+```
+
+##### 18、js中将浮点数转化为整数的方法
+
+```
+parseInt;
+Math.floor() Math.ceil() Math.round()
+```
+
+##### 19、js获取可视区域的width、height
+
+```
+document.documentElement.clientWidth
+document.documentElement.clientHeight
+
+```
+
+##### 20、BOM的方法
+
+```
+window.prompt("请输入你的年龄")		可提示用户进行输入的对话框
+window.alter()						提示弹框
+window.confirm()					用于显示一个带有指定消息和确认及取消按钮的对话框
+```
+
+##### 21、设置定时器、清除定时器
+
+```
+setTimeout
+clearTimeout
+```
+
+##### 22、es5和es6中实现一个类
+
+```
+ES5:
+function Person(name) {
+    this.name = name; 
+}
+Person.prototype.sayHello = function(){
+    return 'Hi, I am ' + this.name;
 }
 ```
-- 2.for in 遍历下标，也可以遍历 Object 的 key 值
-```javascript
-// 遍历数组下标
-for(var i in arr) {
-    console.log(i);
+
+```
+ES6:
+class Person {
+    constructor(name){
+        this.name = name;
+    }
+    sayHello(){
+        return 'Hi, I am ' + this.name;
+    } 
 }
-// 遍历对象 key 值
-var obj = {
-  name: 'jack',
-   age: '18'
-}
-for (var i in obj) {
-  console.log(i) // name, age
-}
-```
-- 3.for of 遍历值，但不能遍历 Object 的 值
-- 4.arr.forEach, 遍历每一项以及下标
-```javascript
-var arr = [1, 2, 3];
-arr.forEach((item, index)=>{
-    console.log(item);
-    console.log(index);
-})
-```
-- 5.Array.from(arr, (value, index)=>{})
-```javascript
-Array.from(arr, function(value, index){
-    console.log(value);
-    console.log(index);
-})
-```
-- 6.map
-```javascript
-arr.map((item, index)=>{
-    console.log(index);
-})
+
 ```
 
-##### 6.数组的增删查改
+##### 23、获取JSON对象所有的key和value
 
-1.添加
-
->改变数组式增加：
-
-1. push(para1, para2) ：从后添加
-
-2. unshift(para1, para2)：从头增加
-
-3. arr.splice(index, howmany, item)：定点添加-->当howmany修改变为0，即变成定点添加. (splice 读 /ai/)
-```javascript
-var arr = [1, 2, 3, 4];
-arr.push(5, 6);
-arr.push([5, 6]) //生成二维数组 1, 2, 3, 4, [5, 6]
-arr.push(...[5, 6]) //把5，6加入  `...`是展开语法，属于es6
-console.log(arr);  //1, 2, 3, 4, 5, 6
 ```
-```javascript
-arr.splice(0, 0, 9);  //往第一项前添加
-console.log(arr);   //9, 1, 2, 3, 4
-```
-
->增加：不改变数组内容，创建一个新的数组
-
-var b = concat(para1, para2)
-
-var b = concat([para1, para2]) 可直接将数组添加，不需展开语法
-```javascript
-var n = arr.concat(5, 6);
-console.log(n);  //1, 2, 3, 4, 5, 6
-```
-
-2.删除
-
-1. shift()从头删除
-
-```javascript
-arr.shift();
-```
-2. pop()从后删除
-
-3.修改
-
-splice(index, howmany, item)
-index: 从哪里开始
-howmany：删除几个，howmany为0就会变成添加
-item：在删除的地方添加的值
-```javascript
-var arr = [1, 2, 3, 4];
-arr.splice(1, 2, 1, 1);
-console.log(arr); //1, 1, 1, 4
-```
-4.查询
-
-查询数组中值的下标
-arr.indexOf(value)
-```javascript
-var index = arr.indexOf(2);
-console.log(index);  //1
-```
-5.截取
-
-slice(first, last) 
-左闭右开，first包括，last不包括，没有last则从第一位到最后一位
-```javascript
-var arr = [1, 2, 3, 4]
-// var b = arr.slice(1, 3); //2, 3
-var b = arr.slice(1); //2, 3, 4
-console.log(b);
-```
-##### 7.深拷贝的几种方式
->深拷贝数组
-
-1.展开语法
-```js
-var arr = [1, 2, 3, 4, 5];
-var temp = [...arr];
-```
-2.slice 和 concat
-```js
-var temp = arr.slice(0);
-```
-```js
-var temp = [].concat(arr);
-```
-3.forEach 单个拷贝
-```js
-arr.forEach(ele => {
-    temp.push(ele)
+var json = {"name" : "Tom", "age" : 18};
+for (var key in json) {
+    console.log(key);     //获取key值
+    console.log(json[key]); //获取对应的value值
 }
 ```
->深拷贝对象
 
-1.展开语法
-```js
+##### 24、识别数组的方法
+
+```
+//一共有四种方法，最后一种容易忽视
+isArray()
+instanceof()
+  判断被检测对象是否为构造函数的实例；
+  原理：左侧被检测对象的原型链上是否包含右侧构造函数的prototype属性
+  let arr = [1, 2, 3]
+  arr instanceof Array // true
+constructor
+  返回对象的构造函数，数组对象的构造函数为Array
+  let arr = [1, 2, 3]
+  arr.constructor === Array // true
+  arr.constructor // ƒ Array() { [native code] }
+Object.prototype.toString.call()
+  let arr = [1,2,3]
+  Object.prototype.toString.call(a) //[object Array]
+```
+
+##### 25、find和filter区别
+
+```
+find 和 filter 都是不改变原数组的方法
+find只查出第一个符合条件的结果,这个结果是一个对象,而filter返回全部结果仍然是数组
+
+```
+
+##### 26、字符串中有哪些方法支持正则
+
+```
+search()
+match()
+replace()
+split()
+
+```
+
+##### 27、基本类型和引用类型的区别
+
+```
+基本数据类型：
+  值不可变；
+  不可以添加属性和方法；
+  赋值是简单赋值；
+  比较是值的比较；
+  存放在栈区；
+引用数据类型：
+  值是可以改变的；
+  可以添加属性和方法；
+  赋值是对象引用；
+  比较是引用的比较；
+  同时保存在栈区和堆区中；
+```
+
+##### 28、如何执行事件监听
+
+```
+addEventListener() 
+```
+
+##### 29、css自适应的单位
+
+```
+百分比：%
+相对视口宽度：vw
+相对视口高度：vh
+相对视口宽度或高度（取决于哪个小）：vm
+相对于父元素字体大小的单位：em
+相对于根元素字体大小的单位：rem
+```
+
+##### 30、js中浅拷贝和深拷贝
+
+```
+浅拷贝：创建一个新对象，这个对象有着原始对象属性值的一份精准拷贝。如果属性是基本类型，拷贝的就是基本类型的值，如果属性是引用类型，拷贝的就是内存地址，如果其中一个对象改变了这个地址，就会影响到原对象。
+浅拷贝方法：
+1.浅拷贝对象（解构）
 var obj = {
     "name": 'xu',
     "age": 23
 }
 var test = {...obj};
-console.log(test);
-```
-2.for in 遍历
-```js
-var test = {};
-for(var i in obj) {
-    test[i] = obj[i];
-}
-console.log(test);
-```
 
-##### 8.Promise的用法
-解释：Promise 是一个构造函数，它可以用来解决回调地狱，封装 ajax 请求
+2.浅拷贝数组（slice和concat）
+let newArr1 = arr.slice();
+let newArr2 = arr.concat();
 
-用法：如封装$.ajax
+3.Object.assign
+let newObj = Object.assign({},obj);   //浅拷贝obj对象
+let newArr = Object.assign([],arr);   //浅拷贝数组
 
-```javascript
-// 1. 创建一个方法，其中 return 出 Promise 对象
-// 2. Promise 对象接受一个函数，其中接收 resolve 和 resject 两个参数
-function promise(url) {
-    return new Promise(function (resolve, reject) {
-        $.ajax({
-            url,
-            type: "get",
-            dataType: "jsonp",
-            success: function (res) {
-                resolve(res);  // resolve 处理异步操作成功的结果
-            },
-            error: function (err) {
-                reject(err)  // reject 处理异步操作失败的结果
-            }
-        })
-    })
-}
-
-// 3. 使用封装好的 promise 方法
-var url = 'https://douban.uieee.com/v2/movie/top250';
-promise(url).then(res => {
-    console.log(res);  // 如果请求成功，则打印 res
-}, err => {
-    console.log(err);  // 如果请求失败，则打印 err
-})
+深拷贝：将一个对象从内存中完整地拷贝一份出来，且改变新对象内的引用类型，不会影响到原对象内的数据
+深拷贝的方法：
+let newObj = JSON.parse(JSON.stringify(obj));
 ```
 
-##### 9.构造函数，原型，原型链
-1.构造函数与实例
-```javascript
-// 构造函数
-function Person(name, age) {
-    this.name = name;
-    this.age = age;
-}
-// xu 是通过构造函数 new 出的一个实例
-var xu = new Person('xu', 19);
-```
-2.原型
 
-构造函数的`prototype`和实例的`__proto__`指向原型, 原型上有构造器`constructor`和定义的方法
-```javascript
-Person.prototype == xu.__proto__ == 原型
-```
-3.在原型上新增一个方法
-```javascript
-var jack = new Person('jack', 18);
-jack.__proto__.add = function(a, b) {
-    return a + b;
-}
-console.log(jack.add(1, 2)) // 3
-// 或者通过构造函数找到原型，在上面新增
-// Person.prototype.add = function(a, b)
-```
-4.原型链
+##### 32、二叉树
 
-读取对象的某个属性时，JavaScript引擎先寻找对象本身的属性，如果找不到，就到它的原型去找，如果还是找不到，就到原型的原型去找。如果直到最顶层的Object.prototype还是找不到，则返回undefined。这个过程就叫原型链
-
-##### 10.继承
-1.ES5中的继承
-```js
-function User(name, age){
-    this.name = name;
-    this.age = age;
-}
-function VipUser(name, age, level){
-    // User.call(this, name, age);
-    User.apply(this, [name, age]);
-    this.level = level;
-}
-var jack = new VipUser('jack', 23, 13);
-// 在VipUser 原型上定义一个say方法
-VipUser.prototype.say = function() {
-    console.log(this.name);
-}
-console.log(jack);
-jack.say(); 
 ```
-2.ES6 中的继承
-```js
-function User(name, age){
-    this.name = name;
-    this.age = age;
-}
-class VipUser extends User {
-    constructor(name, age, level) {
-        super(name, age);
-        this.level = level;
+常见的二叉树有
+满二叉树：除叶子结点外,所有结点都有两个结点,叶子结点的left,right为NULL.
+哈夫曼树：又称为最优二叉数，是一种带权路径最短的树。
+完全二叉树:除了最底层的叶子结点之外,其余层全满,而且叶子层集中在左端.堆是一种特殊的完全二叉树。
+
+```
+
+##### 33、正则中匹配以数字开头
+
+```
+/^\d+/
+```
+
+##### 34、cookie、localStorage、sessionStorage的区别
+
+```
+1.数据存储方式：
+• cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）
+• cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递
+• sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存
+2、存储大小：
+• cookie数据大小不能超过4k
+• sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大
+3、有期时间：
+• localStorage 存储持久数据，浏览器关闭后数据不丢失除非主动删除数据
+• sessionStorage 数据在当前浏览器窗口关闭后自动删除
+• cookie 设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭
+
+```
+
+##### 35、let、const 以及 var 的区别是什么？
+
+```
+let 和 const 定义的变量不会出现变量提升，而 var 定义的变量会提升。
+let 和 const 是JS中的块级作用域
+let 和 const 不允许重复声明(会抛出错误)
+let 和 const 定义的变量在定义语句之前，如果使用会抛出错误(形成了暂时性死区)，而 var 不会。
+const 声明一个只读的常量。一旦声明，常量的值就不能改变(如果声明是一个对象，那么不能改变的是对象的引用地址)
+
+```
+
+##### 36、字符串常用方法
+
+```
+1. indexOf() 返回某个指定的子字符串在字符串中第一次出现的位置
+2. slice(a,b) 返回字符串中提取的子字符串。
+3. substring(a,b) 提取字符串中介于两个指定下标之间的字符。
+4. substr(i,len) 返回从指定下标开始指定长度的的子字符串
+5. split() 把字符串分割成字符串数组。
+6. replace(a,"b") 在字符串中用一些字符替换另一些字符
+7. match() 返回所有查找的关键字内容的数组。
+
+```
+
+##### 37、promise有哪两种状态
+
+```
+resolve 成功触发
+reject 失败触发
+
+```
+
+##### 39、px和rem区别
+
+```
+px 固定长度单位，不能适应响应式页面
+rem 相对于根元素<html>的font-size而定，适应响应式页面
+
+```
+
+##### 40、事件代理和事件委托
+
+```
+事件委托:事件委托，又称为事件代理，是JavaScript中绑定事件的常用技巧。顾名思义，事件代理就是把原本需要绑定的事件委托给父元素，让父元素负责事件监听。事件代理的原理是DOM元素的事件冒泡。使用事件代理的好处是减少事件数量，提高性能。
+
+```
+
+##### 41、js中有哪些内置对象
+
+```
+1. Arguments
+2. Array
+3. Boolean
+4. Error
+5. Function
+6. Math
+7. Number
+8. Object 
+9. String
+10. RegExp(正则表达式对象)
+
+```
+
+##### 42、什么是中间件、有哪些中间件
+
+```
+中间件: 是一种独立的系统软件或服务程序，分布式应用软件借助这种软件在不同的技术之间共享资源。
+常见的中间件： Tomcat Node Express
+
+```
+
+##### 43、es6中导出模块几种方式
+
+```
+export
+export default
+
+```
+
+##### 44、key值的作用
+
+```
+用于管理可复用的元素。尽可能高效地渲染元素，前端框架通常会复用已有元素而不是从头开始渲染。
+
+```
+
+##### 45、不支持冒泡的事件
+
+```
+UI事件 
+load
+unload
+scroll
+resize
+
+焦点事件 
+blur
+focus
+
+鼠标事件 
+mouseleave
+mouseenter
+
+```
+
+##### 46、原生ajax如何实现
+
+```
+var url = "https://www.easy-mock.com/mock/5d67436324fd60626abfe910/ajax/base"
+var xhr = new XMLHttpRequest();
+xhr.open('get',url,true)   //true：异步处理
+xhr.send()
+xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4 && xhr.status == 200){
+        var res = JSON.parse(xhr.responseText);   //json格式的字符串转换为json对象
+        var name = document.getElementById("name");
+        name.innerHTML = res.data.name;
     }
-    say() {
-        console.log(this.name);
-    }
 }
-var jack = new VipUser('jack', 23, 12);
-console.log(jack);
-jack.say();
+
 ```
-##### 4.JS的内存机制与垃圾回收机制
 
-##### 5.JS中的内置函数
+##### 48、判断数组是否包含某个值
 
-##### 6.https的原理及其局限性
+```
+indexOf() 此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1
+includes() 此方法判断数组中是否存在某个值，如果存在返回 true，否则返回false。
+find()  返回数组中满足条件的第一个元素的值，如果没有，返回undefined
+findIndex() 返回数组中满足条件的第一个元素的索引（下标）, 如果没有找到，返回-1
 
-##### 7.get方式和post方式有什么区别(李许怡安)
+```
 
-##### 8.解释一下js原型链(李许)
+##### 49、url由那几个部分构成
 
-##### 9.call,apply,bind的作用,之间的区别(李许)
+```
+一个完整的URL包括：协议部分、域名部分、端口部分、虚拟目录部分、文件名部分、参数部分、锚部分.
+```
 
-##### 10.什么叫域,js是否能跨域,如何跨域(李许)
+##### 50、前++和后++区别
 
-##### 11.正则中的贪婪模式非贪婪模式的区别(李许)
+```
+i++是先赋值，然后再自增；++i是先自增，后赋值。
+```
 
-##### 12.https的局限性(李姚)
+##### 51、eslint报错
 
-##### 13.数组的方法有哪些,有哪些方法不会改变数组原来的结构
+```
+webpack.base.config.js中注释掉
+rules: [
+	//...(config.dev.useEslint ? [createLintingRule()] : []),
+]
 
-##### 14.==和===的区别
+```
 
-##### 15.解释一下同步和异步
+##### 52、无状态组件和有状态组件区别
 
-##### 16.http和https的区别
+```
+有状态组件拥有生命周期这些函数，无状态组件没有生命周期的函数,无状态组件性能更高。
 
-##### 17.字符串中有哪些方法支持正则
+```
 
-~~~
-replace
-match
-split
-search
-~~~
+##### 53、doctype的作用、标准与兼容的区别
 
-##### 18.let,var,const的区别
+```
+1.<!DOCTYPE>声明位于位于HTML文档中的第一行，处于 <html> 标签之前。告知浏览器的解析器用什么文档标准解析这个文档。DOCTYPE不存在或格式不正确会导致文档以兼容模式呈现。
+2.标准模式的排版 和JS运作模式都是以该浏览器支持的最高标准运行。在兼容模式中，页面以宽松的向后兼容的方式显示,模拟老式浏览器的行为以防止站点无法工作。
+```
 
-##### 19.什么是声明提前
+##### 54、箭头函数和普通函数的区别
 
-##### 20.谈谈Javascript的垃圾回收机制
+```
+普通函数的this 指向调用它的那个对象
+箭头函数不能作为构造函数，不能使用new，箭头函数的this永远指向其上下文的 this
+```
 
-##### 21.如何进行页面的性能优化
+##### 55、闭包
 
-##### 22.如何实现Javascript的继承
+```
+使用闭包主要是为了设计私有的方法和变量。闭包的优点是可以避免全局变量的污染；缺点是闭包会常驻内存，增加内存的使用量，使用不当很容易造成内存泄漏。在JavaScript中，函数即闭包，只有函数才会产生作用域。
+闭包有3个特性：
+（1）函数嵌套函数
+（2）在函数内部可以引用外部的参数和变量
+（3）参数和变量不会被垃圾回收机制回收
+```
 
-##### 23.浏览器内核分成几个部分,几个浏览器厂商的内核分别是什么
+##### 56、对mvvm的理解
 
-##### 24.innerHTML和document.write之间的区别
+```
+Model-View-ViewModel即模型-视图-视图模型。
+【模型】指的是后端传递的数据。
+【视图】指的是所看到的页面。
+【视图模型】mvvm模式的核心，它是连接view和model的桥梁。
 
->#### **童建设组**
+```
 
-##### 1.$.ajax的传参(戴靓)
+##### 57、原型和原型链
 
-##### 2.js中的this怎么理解(童建设)
+```
+原型
+• 在JavaScript中，每当定义一个函数数据类型(普通函数、类)时候，都会天生自带一个prototype属性，这个属性指向函数的原型对象，并且这个属性是一个对象数据类型的值。
+• 每一个对象数据类型(普通的对象、实例、prototype......)也天生自带一个属性__proto__，属性值是当前实例所属类的原型(prototype)。原型对象中有一个属性constructor, 它指向函数对象。
 
-##### 3.原生ajax如何实现(全梦妍)
+原型链
+• 在JavaScript中万物都是对象，对象和对象之间也有关系，并不是孤立存在的。对象之间的继承关系，在JavaScript中是通过prototype对象指向父类对象，直到指向Object对象为止，这样就形成了一个原型指向的链条，专业术语称之为原型链。
+• Object是JS中所有对象数据类型的基类(最顶层的类)在Object.prototype上没有proto这个属性。
 
-##### 4.如何解决回调地狱(戴靓)
+```
 
-~~~
-- promise
-- generator
-- async
-~~~
+##### 58、java和js区别
 
-##### 5.点击一个按钮,从客户端发起请求,到服务器端响应到底放生了什么(童建设)
+```
+1.数据类型不同，Java基本类型有八种，JS有三种基本类型
+2.Java是强类型语言，JS是弱类型语言
+3.Java面向对象的编程语言，JS基于对象的脚本语言
+4.Java的源代码在执行之前必须经过编译，而JavaScript可以由浏览器直接解释执行。
 
-##### 6.什么是跨域(王宇)
+```
 
-##### 7.一个完整的http请求分成几个部分
+##### 59、js中有如何实现重载
 
-##### 8.说一下new操作符的作用
+```
+function overload () {
+  if (arguments.length === 1) {
+    console.log('一个参数')
+  }
+  if (arguments.length === 2) {
+    console.log('两个参数')
+  }
+}
+
+```
+
+##### 60、search的返回值
+
+```
+search() 方法用于检索字符串中指定的子字符串，返回第一个匹配的位置,如果没有找到任何匹配的子串，则返回 -1。
+
+```
+
+##### 61、函数的参数默认赋值
 
-##### 9.常见的http状态码
+```
+这是es6的新特性
+在es6之前，往往这样定义参数的默认值，在函数内声明。
+function printText(text) {
+    text = text || ;
+    console.log(text);
+}
+在es6之后可以直接在声明形参的时候给予默认值
+function printText(text = 'default') {
+    console.log(text);
+}
 
-##### 10.数组遍历的方法有哪些
+```
 
-##### 11.写一个简单的邮箱正则
+##### 62、常用DOM节点
 
-##### 12.字符串的常用方法
+```
+1.元素节点 元素节点element对应网页的HTML标签元素
+2.属性节点  元素节点（HTML标签）的属性，如 id 、class 、name 等
+3.文本节点  素节点或属性节点中的文本内容。
+4.注释节点  表示文档注释，形式为<!-- comment text -->。
+5.文档节点  表示整个文档（DOM 树的根节点，即 document ）
 
-##### 13.cookie,LocalStorage,sessionStorage的区别
+```
 
-##### 14.如何实现事件监听(javascript,jquery实现)
+##### 63、typeof能识别数组吗
 
->#### **徐保山组**
+```
+不能， 在参数为数组，对象或者null时，typeof返回的结果都是object
+识别数组可以用
+Array.isArray()
+变量.constract===array
+变量 instanceof Array
+变量.Object.prototype.toString.call( )
+Object.prototype.toString.call(a);//"[object Array]"
+Object.prototype.toString.call(b);//"[object Object]"
+Object.prototype.toString.call(c);//"[object String]"
 
-##### 1.Javascript中的定时器有哪些？他们的区别及用法是什么?(丁美丽)
+```
 
-##### 2.常用的数组的方法有哪些(尹超)
+##### 64、split和join作用
 
-##### 3.promise的原理,如何使用promise(徐保山)
+```
+join('x')用于以参数'x'连接多个字符或字符串，返回值为一个字符串；
 
-##### 4.怎样添加、移除、移动、复制、创建和查找节点？(丁美丽)
+split('x')用于以参数'x'分割字符串，返回一个数组
+他们相反
 
-##### 5.JSON的几种方法(丁美丽)
+```
 
-##### 6.什么是事件冒泡,事件捕获,事件委托?如何阻止事件冒泡?(陈雅婷)
+##### 65、转义字符
 
-##### 7.如何创建JS对象(陈雅婷)
+```
+不断行的空白格   &nbsp； 
+小于	        &lt;
+大于	        &gt;
+&符号	        &amp;
+双引号	        &quot;
 
-##### 8.如何判断JS的数据类型(丁美丽)
+```
 
-##### 9.基本类型和引用类型的在赋值运算中的区别(徐保山)
+##### 66、各大浏览器内核
 
-##### 10.MVVM开发模式带来的好处
+```
+1、IE浏览器内核：Trident内核，也是俗称的IE内核；
+2、Chrome浏览器内核：统称为Chromium内核或Chrome内核，以前是Webkit内核，现在是Blink内核；
+3、Firefox浏览器内核：Gecko内核，俗称Firefox内核；
+4、Safari浏览器内核：Webkit内核；
+5、Opera浏览器内核：最初是自己的Presto内核，后来是Webkit，现在是Blink内核；
+6、360浏览器、猎豹浏览器内核：IE+Chrome双内核；
+7、搜狗、遨游、QQ浏览器内核：Trident（兼容模式）+Webkit（高速模式）；
+8、百度浏览器、世界之窗内核：IE内核；
+9、2345浏览器内核：以前是IE内核，现在也是IE+Chrome双内核；
 
-~~~
-- 模块化
-- 低藕合
-- 高复用
-- 可维护
-- 可拓展
-~~~
+```
 
-##### 11.什么叫不同的域
+##### 67、雪碧图的好处
 
-##### 12.如何获取DOM节点
+```
+雪碧图把小图标放在同一张图片文件里，通过 background-position 显示那张图片文件的不同位置。
+优点：
+1.减少HTTP请求数
+2.可以是任意图形，也可以是任意色彩
+3.兼容性极好（对于位图的Sprites兼容性都非常的好，但对于SVG的Sprites，还是受到浏览器的限制，最起码要支持SVG的浏览器才能得到支持）
+缺点
+1.增加开发时间，需要人肉或通过相关工具，将零散的图形合并到一起，而不同的合并方式，图形的色彩对Web的性能有直接的影响；
+2.增加维护成本，要增加新的图标合成进来，是件较难的事情，甚至直接会影响到前面又定位好的图片。目前为止，使用自动编译工具，相对比人肉处理要理想一些；
+3.图片尺寸固定，在位图的Sprites中无法通过CSS来修改图标的大小，但在SVG的Sprites中可以配合CSS的background-size调整图标的大小；
 
-##### 13.JS支持重载吗?(尹超)
+```
 
-##### 14.对js语言特性的理解
+##### 68、表格里cellpadding和cellspacing的区别
 
-##### 15.ES6有哪些特点
+```
+cellspacing 设置表格边框和单元格之间的间距（以像素为单位）
+cellpadding 设置单元格中的内容与单元格边框的间距（也是以像素为单位）
 
-##### 16.前端性能优化
+```
 
-#### **算法**
+##### 69、如何阻止表单提交
 
-##### 1.数组去重
+```
+1.为表单的提交按钮添加点击事件，返回false
+2.为表单的提交按钮添加点击事件，添加event.preventDefault()；
 
-~~~
-var arr = [1, 1, 2, 2, 3, 4]
-var clone = [];
-var temp ={};
-arr.forEach(ele=>{
-    if(!temp[ele]){
-        temp[ele]="a"
-        clone.push(ele)
-    }
-})
-console.log(clone);
-~~~
+```
 
-##### 2.冒泡排序
+##### 70、去除用户名前后的空格、全部的空格
 
-##### 3.取数组中的偶数
+```
+去除前后空格
+使用str.trim()方法
+去除全部空格
+function tool(a){
+    let b=a.trim();
+    let c=b.split(" ");
+    return c.join("");
+}
 
-##### 4.取数组中的最大值,最小值
+```
 
+##### 71、axios怎么挂载在原型上
 
-##### 6.如何判断质数
+```
+// 设置 全局的 baseURL
+axios.defaults.baseURL = 'xxx'
 
-~~~
-function isPrime(num){
-            for(var i=2;i<num;i++){
-                if(num%i==0){
-                    return false
-                }else{
-                    return true;
+// 将 axios 挂载 到 父类的 原型上；
+React.Component.prototype.$http = axios
+
+```
+
+##### 72、什么叫优雅降级和渐进增强
+
+```
+渐进增强（Progressive Enhancement）：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。
+
+优雅降级（Graceful Degradation）：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。
+
+```
+
+##### 73、JSON.stringify()和JSON.parse()用法
+
+```
+JSON.parse()是把字符串类型转化成JSON对象。
+JSON.stringify()是把JSON对象转化成字符串类型。
+
+```
+
+##### 74、new操作符的原理
+
+```
+创建一个空对象，构造函数中的this指向这个空对象
+这个新对象被执行【原型】链接
+执行构造函数方法，属性和方法被添加到this引用的对象中
+
+```
+
+##### 75、DOM添加节点和移除节点
+
+```
+appendChild()
+removeChild()
+
+```
+
+##### 76、如何理解js中this关键字
+
+```
+在全局作用域以及普通函数中，this指向全局对象window（注意：在定时器中 setTimeout setInterval 中同样指向window）
+方法调用中this指向方法的对象，注册事件时this指向事件源
+构造函数中this指向构造函数的实例
+
+```
+
+##### 77、js中有哪些定时器
+
+```
+setTimeout() 只执行一次
+setInterval() 可执行多次
+
+```
+
+##### 78、defer和async的区别
+
+```
+在于一个执行时间,defer会在文档解析完之后执行,并且多个defer会按照顺序执行,而async则是在js加载好之后就会执行,并且多个async,哪个加载好就执行哪个
+
+```
+
+##### 79、es6中set和map
+
+```
+Set 它类似于数组但是成员的值都是唯一的，没有重复的值。 另外，两个对象总是不相等的。
+map 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。
+
+```
+
+##### 80、数组去重
+
+https://www.jianshu.com/p/6300a031dba5
+
+```
+1.通过set去重
+arrayA=new Set();
+2.利用for嵌套for，然后splice去重
+双层循环，外层循环元素，内层循环时比较值。值相同时，则删去这个值
+function unique(arr){            
+        for(var i=0; i<arr.length; i++){
+            for(var j=i+1; j<arr.length; j++){
+                if(arr[i]==arr[j]){         //第一个等同于第二个，splice方法删除第二个
+                    arr.splice(j,1);
+                    j--;
                 }
             }
-            
+        }
+return arr;
 }
-~~~
-bbb
-test
-aaa
+3. indexOf() 去重
+新建一个空的结果数组，for 循环原数组，判断结果数组是否存在当前元素，如果有相同的值则跳过，不相同则push进数组。
+function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log('type error!')
+        return
+    }
+    var array = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (array .indexOf(arr[i]) === -1) {
+            array .push(arr[i])
+        }
+    }
+    return array;
+}
+4.利用includes
+function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log('type error!')
+        return
+    }
+    var array =[];
+    for(var i = 0; i < arr.length; i++) {
+            if( !array.includes( arr[i]) ) {//includes 检测数组是否有某个值
+                    array.push(arr[i]);
+              }
+    }
+    return array
+}
+5.  srot（）  相邻元素去重      
+然后根据排序后的结果进行遍历及相邻元素比对，如果相等则跳过改元素，直到遍历结束
+function unique(arr) {
+    if (!Array.isArray(arr)) {
+        console.log('type error!')
+        return
+    }
+    arr = arr.sort()
+    let res = []
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== arr[i-1]) {
+            res.push(arr[i])
+        }
+    }
+    return res
+}
 
+```
+
+
+##### 82、position有哪几种属性
+
+```
+absolute :生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。
+fixed :生成固定定位的元素，相对于浏览器窗口进行定位
+relative ：生成相对定位的元素，相对于其正常位置进行定位。
+static:默认值。没有定位，元素出现在正常的流中.
+inherit:规定应该从父元素继承 position 属性的值。
+
+```
+
+
+##### 84、递归函数
+
+```
+直接或简介调用函数本身，一定要有一个结束条件
+
+```
+
+##### 85、函数节流、函数防抖
+
+```
+函数节流概念： 规定一个单位时间，在这个单位时间内，只能有一次触发事件的回调函数执行，如果在同一个单位时间内某事件被触发多次，只有一次能生效。
+函数防抖概念：在事件被触发n秒后再执行回调，如果在这n秒内又被触发，则重新计时。
+
+```
+
+##### 86、解释下泛型
+
+```
+泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
+
+```
+
+##### 87、null，undefined 的区别？
+
+```
+null是一个表示”无”的对象，转为数值时为0；undefined是一个表示”无”的原始值，转为数值时为NaN。
+null表示”没有对象”，即该处不应该有值
+（1） 作为函数的参数，表示该函数的参数不是对象。
+（2） 作为对象原型链的终点。
+undefined表示”缺省值”，就是此处应该有一个值，但是还没有定义        
+（1）变量被声明了，但没有赋值时，就等于undefined。        
+（2)  调用函数时，应该提供的参数没有提供，该参数等于undefined。        
+（3）对象没有赋值的属性，该属性的值为undefined。        
+（4）函数没有返回值时，默认返回undefined。
+
+```
+
+##### 88、原生js查询节点
+
+```
+document.getElementById("id")             //通过Id查找节点
+document.getElementByClassName("class")   //通过类名获取
+document.getElementsByName("name")        //通过name获取
+document.getElementsByTagName()           //通过标签名获取
+document.querySelectorAll()               //通过选择器查询
+
+```
+
+##### 89、文本限制
+
+```
+p{
+    overflow: hidden;
+    text-overflow: ellipsis;  //超出后以...结尾
+    white-space:nowrap; 
+    //white-space指定文字是否换行
+}
+
+```
+
+##### 90、节点分类
+
+```
+1.元素节点 元素节点element对应网页的HTML标签元素
+2.属性节点  元素节点（HTML标签）的属性，如 id 、class 、name 等
+3.文本节点  素节点或属性节点中的文本内容。
+4.注释节点  表示文档注释，形式为<!-- comment text -->。
+5.文档节点  表示整个文档（DOM 树的根节点，即 document 
+```
+
+##### 91、正则中贪婪和非贪婪模式
+
+```
+贪婪与非贪婪模式影响的是被量词修饰的子表达式的匹配行为，
+贪婪模式在整个表达式匹配成功的前提下，尽可能多的匹配，
+非贪婪模式在整个表达式匹配成功的前提下，尽可能少的匹配
+```
+
+##### 92、class封装一个axios
+
+```
+var baseUrl="https://music.aityp.com/"
+class HTTP{
+    static request({url,data,method="GET"}){
+        return new Promise((resolve,reject)=>{
+            wx.request({
+                url:baseUrl+url,
+                data,
+                header: {'content-type':'application/json'},
+                method,
+                dataType: 'json',
+                responseType: 'text',
+                success: (res) => {
+                    resolve(res)
+                },
+                fail: (err) => {
+                    reject(err)
+                },
+               
+            });
+              
+        })
+    }
+}
+module.exports=HTTP
+```
+
+##### 93、js中如何对对象进行遍历
+
+```
+Object.keys()方法
+var obj = {'a':'123','b':'345'};
+console.log(Object.keys(obj));  //['a','b']
+
+var obj1 = { 100: "a", 2: "b", 7: "c"};
+console.log(Object.keys(obj1)); // console: ["2", "7", "100"]
+
+var obj2 = Object.create({}, { getFoo : { value : function () { return this.foo } } });
+obj2.foo = 1;
+console.log(Object.keys(obj2)); // console: ["foo"]
+```
+
+##### 94、什么是栈、什么是队列
+
+```
+栈是一种动态集合，它是一种LIFO（last in first out后进先出）结构
+队列与栈不同，它是一种FIFO（first in first out先进先出）结构
+```
+
+##### 95、js中全局对象是什么
+
+```
+JavaScript 中有一个特殊的对象，称为全局对象（Global Object），它及其所有属性都可以在程序的任何地方访问，即全局变量。
+② 全局对象是预定义的对象，作为 JavaScript 的全局函数和全局属性的占位符。通过使用全局对象，可以访问所有其他所有预定义的对象、函数和属性。全局对象不是任何对象的属性，所以它没有名称。
+③ 在顶层 JavaScript 代码中，可以用关键字 this 引用全局对象。但通常不必用这种方式引用全局对象，因为全局对象是作用域链的头，这意味着所有非限定性的变量和函数名都会作为该对象的属性来查询。例如，当JavaScript 代码引用 parseInt() 函数时，它引用的是全局对象的 parseInt 属性。全局对象是作用域链的头，还意味着在顶层 JavaScript 代码中声明的所有变量，都将成为全局对象的属性。
+④ 全局对象只是一个对象，而不是类。既没有构造函数，也无法用new实例化一个新的全局对象。
+⑤ 实际上，ECMAScript 标准没有规定全局对象的类型，而在客户端 JavaScript 中，全局对象就是 Window 对象，表示允许 JavaScript 代码的 Web 浏览器窗口。浏览器把全局对象作为window对象的一部分实现了，因此，所有的全局属性和函数都是window对象的属性和方法。 
+```
+
+##### 96、函数的命名规则和类的命名规则
+
+```
+函数：
+命名方法：小驼峰式命名法。
+命名规范：前缀应当为动词。
+类：
+命名方法：大驼峰式命名法，首字母大写。
+命名规范：前缀为名称。
+```
+
+## 

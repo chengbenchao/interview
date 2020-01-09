@@ -1,16 +1,17 @@
-![logo](logo.svg)
+![logo](assets/logo-s.svg)
 
 # 前端面试宝典
 
 > 涉及以下技术栈
 
-* [HTML](pages/html,css)
-* [CSS](pages/html,css)
-* [Javascript](pages/Javascript)
-* [Vue](pages/Vue)
-* [React](pages/React)
-* [工具](pages/tool)
+* HTML-CSS-Javascript
+* Vue
+* React
+* Angular
+* 小程序
+* 计算机网络
 
-[emoji](https://gist.github.com/rxaviers/7360908)
-[码云](https://gitee.com/chengbenchao/interview)
-[起步](pages/html,css)
+
+[码云](https://gitee.com/chengbenchao)
+[语雀](https://www.yuque.com/chengbenchao)
+[Get Started](pages/html-css)
