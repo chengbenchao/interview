@@ -151,10 +151,13 @@ header、nav、footer、aside、article、section
 会受最近块级父元素大小的影响
 ```
 
-##### 15、阻止a标签跳转
+##### 15、阻止a标签默认行为
 
 ```
-<a href="#" class="demo" ></a>
+(1) <a href="##" class="demo" ></a>
+(2) <a href="javascript:void(0);" class="demo" ></a>
+ 	<a href="javascript:;" class="demo" ></a>
+
 ```
 
 ##### 16、link和@import

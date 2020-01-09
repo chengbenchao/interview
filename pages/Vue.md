@@ -21,14 +21,16 @@ v-leave-to: 2.1.8版及以上 定义离开过渡的结束状态。在离开过�
 ##### 2、keep-alive的作用
 
 ```
-当<keep-alive>包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。<keep-alive>是一个抽象组件，它自身不会渲染一个DOM元素，也不会出现在父组件链中。
+当<keep-alive>包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。<keep-alive>是一个抽象组件，它
+自身不会渲染一个DOM元素，也不会出现在父组件链中。
 当<keep-alive>内切换组件时，它的activated和deactivated这两个生命周期钩子函数将会执行。
 ```
 
 ##### 3、vue中v-if、v-show的区别
 
 ```
-v-show与v-if都是条件渲染指令。不同的是，无论v-show的值为true或false，元素都会存在于HTML页面中；而只有当v-if的值为true时，元素才会存在于HTML页面中。v-show指令是通过修改元素的style属性值实现的。
+v-show与v-if都是条件渲染指令。不同的是，无论v-show的值为true或false，元素都会存在于HTML页面中；而只
+有当v-if的值为true时，元素才会存在于HTML页面中。v-show指令是通过修改元素的style属性值实现的。
 ```
 
 ##### 4、vue中页面返回怎么写
@@ -51,7 +53,8 @@ url:require ("image")
 ```
 1.在组件中，用一个this.$store.dispath这个方法触发actions提交修改数据的操作 
 2.Actions用commit来触发	mutations来修改数据 
-3.mutations接收到commit的请求，就会自动通过Mutate来修改state里面的数据，也只有Mutations可以操作state中的状态数据，状态一改变，组件中就重新渲染 
+3.mutations接收到commit的请求，就会自动通过Mutate来修改state里面的数据，也只有Mutations可以操作
+  state中的状态数据，状态一改变，组件中就重新渲染 
 4.最后由store触发每一个调用它的组件更新
 
 ```
@@ -60,7 +63,8 @@ url:require ("image")
 
 ```
 $route为当前router跳转对象 里面可以获取name、path、query、params等
-$router为VueRouter的实例，相当于一个全局的路由器对象，里面含有很多属性和子对象，例如history对象 经常用的跳转链接就可以用this.$router.push，和router-link跳转一样。。。 
+$router为VueRouter的实例，相当于一个全局的路由器对象，里面含有很多属性和子对象，例如history对象 经常
+用的跳转链接就可以用this.$router.push，和router-link跳转一样。。。 
 ```
 
 ##### 8、vue移动端适配
@@ -128,7 +132,7 @@ linkActiveClass
 
 ```
 局部：单个vue页面中的<script>中的filters：{}中
-全局：Vue.filter（“name”，function（key）{      }）   main.js中写
+全局：Vue.filter("name"，function(key){ })   main.js中写
 
 ```
 

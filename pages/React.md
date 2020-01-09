@@ -20,10 +20,9 @@ onClick={this.handleClick.bind(this, props0, props1, ...}
 1. 所有页面都要用的公共信息 ；
 2. 一个页面又多个ajax ；
 3. 不同组件之间期望不用通过组件代码通信
-
+```
 工作流：
    https://img2018.cnblogs.com/blog/1087883/201812/1087883-20181205145741397-1912744867.png
-```
 
 ##### 4、在react中如何避免样式重叠
 

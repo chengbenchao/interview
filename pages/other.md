@@ -94,11 +94,11 @@ YApi、EasyAPI、Postman、CrapApi、Swagger
 国内：
 	weex			阿里				vue
 	taro			京东				react
-	hippy			腾讯				vue/react
+	hippy		   腾讯				vue/react
 国外：
-	react-native	facebook		   react
+	react-native	   facebook		    react
 	flutter			google			  dart
-	ionic			几个屌丝写的		 angular/react/vue
+	ionic			  几个屌丝写的		 angular/react/vue
 ```
 
 ﻿
