@@ -260,3 +260,47 @@ Angular:
    		2、在父组件中接收事件
    		<v-item	 bind:toggle="handleToggle"></v-item>
 ```
+##### 12、配置子路由、重定向
+```
+子路由
+	 vue:
+    	{
+    		children:[
+          		{
+            		path:"morning",
+            		component:MorningComponent
+          		},
+				]
+        }
+    react:
+    <Switch>
+            <Route path="/about/morning">
+            <Morning/>
+            </Route>
+    </Switch>
+    angular:
+    	{
+    		children:[
+          		{
+            		path:"morning",
+            		component:()=>import('路径)      
+				},]
+    	}
+
+重定向
+	vue:
+    	{
+    		path: '/',redirect: '/home',
+    	}
+    
+    react: 
+		<Redirect from="/about" to="/about/morning"></Redirect>
+    
+    angular:
+     	{
+            path:"",//不能写斜杠
+            redirectTo:"morning",
+            pathMatch:"full"
+        }
+    
+```
