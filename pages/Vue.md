@@ -50,7 +50,7 @@ url:require ("image")
 
 ##### 6、vuex的工作流
 
-![img]( )
+![img](https://cdn.nlark.com/yuque/0/2019/png/457370/1574166967535-ff0895d8-f947-4299-b47a-6124f89c0906.png)
 
 ```
 1.在组件中，用一个this.$store.dispath这个方法触发actions提交修改数据的操作 
