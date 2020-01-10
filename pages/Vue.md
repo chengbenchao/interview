@@ -50,6 +50,8 @@ url:require ("image")
 
 ##### 6、vuex的工作流
 
+![img]( )
+
 ```
 1.在组件中，用一个this.$store.dispath这个方法触发actions提交修改数据的操作 
 2.Actions用commit来触发	mutations来修改数据 
