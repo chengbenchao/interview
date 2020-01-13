@@ -830,9 +830,42 @@ setInterval() 可执行多次
 
 ```
 Set 它类似于数组但是成员的值都是唯一的，没有重复的值。 另外，两个对象总是不相等的。
-map 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。
-    也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 
-    结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。
+map 它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。
+
+1.将set转为数组
+Array.from(set);
+var arr=[...set];
+set的方法
+set.add(value)添加某个值，返回set结构本身
+set.delete(value)删除某个值，返回一个boolean ，表示是否成功删除
+set.has(value)返回一个boolean，表示该值是否成为set的成员
+set.clear()清除所有成员，无返回值
+Set 结构的实例有四个遍历方法，可以用于遍历成员:
+keys()：返回键名的遍历器
+values()：返回键值的遍历器
+entries()：返回键值对的遍历器
+forEach()：使用回调函数遍历每个成员
+2.对map操作
+将map转为数组
+	1.map转为JSON字符串
+	var my_string=JSON.stringify([...my])
+	将json字符串转为数组
+	var my_obj=JSON.parse(my_string)
+	
+	2.直接用扩展运算符...展开
+将map转为对象
+Object.fromEntries(myMap.entries())
+将对象转为map
+new Map(Object.entries(obj))
+
+map的方法
+.set() 添加数据
+.delete() 删除某个key以及对应value 返回boolean
+.size 返回元素数
+.keys() 获取map的所有Key
+.values() 获取所有的value
+.entries() 获取map的所有成员
+.clear() 清除。
 
 ```
 
