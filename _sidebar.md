@@ -2,7 +2,7 @@
 * [JavaScript](pages/Javascript)
 * [各大框架](pages/Summary)
 * [Vue](pages/Vue)
-* [React](pages/react)
+* [React](pages/React)
 * [Angular](pages/angular)
 * [小程序](pages/small)
 * [Android](pages/android)
