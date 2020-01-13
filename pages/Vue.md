@@ -137,4 +137,22 @@ linkActiveClass
 全局：Vue.filter("name"，function(key){ })   main.js中写
 
 ```
+##### 17、vue路由拦截器(路由守卫),一般用来干什么
+https://zhuanlan.zhihu.com/p/59889754
 
+https://www.jianshu.com/p/691379025334
+```
+路由守卫：主要就是全局守卫、路由独享守卫、局部守卫
+  1、全局守卫：是指路由实例上直接操作的钩子函数，特点是所有路由配置的组件都会触发，直白点就是触发路由就会
+              触发这些钩子函数
+    router.beforeEach((to,from,next)=>{})
+    回调函数中的参数，to：进入到哪个路由去，from：从哪个路由离开，next：函数，决定是否展示你要看到的
+    路由页面
+  2、路由独享守卫：是指在单个路由配置的时候也可以设置的钩子函数
+    beforeEnter:(to,from,next)=>{}
+  3、局部守卫：是指在组件内执行的钩子函数，类似于组件内的生命周期，相当于为配置路由的组件添加的生命周期钩
+              子函数
+    beforeRouteEnter:(to,from,next)=>{}
+
+其他的自己照着网址细品
+```
