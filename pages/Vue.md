@@ -156,3 +156,44 @@ https://www.jianshu.com/p/691379025334
 
 其他的自己照着网址细品
 ```
+```
+全局守卫：
+  import Vue from 'vue'
+  import VueRouter from 'vue-router'
+  Vue.use(VueRouter)
+  '''
+  const router = new VueRouter({
+    mode: 'history',
+    routes
+  })
+  router.beforeEach((to, from, next) => {
+    //to 将要访问的路径
+    //from 代表从哪个路径跳转而来
+    //next 是一个函数,表示放行
+    //  next() 放行  next('/login') 强制跳转
+    if (to.path === '/login') return next();
+    //获取缓存
+    const tokenStr = window.sessionStorage.getItem('token')
+    //如果没有值,则强制跳转login页面,有则放行
+    if (!tokenStr) return next('/login')
+    next()
+  })
+  export default router
+```
+```
+局部守卫：beforeRouteEnter不能获取组件实例"this",但我们通过传一个回调给next,就可以使用vm来访问组件实例
+  <script>
+  export default {
+      data(){
+          return{
+              name:"Arya"
+          }
+      },
+      beforeRouteEnter:(to,from,next)=>{
+          next(vm=>{
+              alert("hello" + vm.name);
+          })
+      }
+  }
+  </script>
+```

@@ -72,7 +72,7 @@ ngAfterViewChecked()
 
 ```
 - onCreate    活动第一次创建时候调用
-- onStart     活动由可见到不可见时候触发
+- onStart     活动可见时候触发
 - onResume    活动处于栈的顶部会触发
 - onPause     活动处于暂停状态时候触发
 - onStop      活动不可见的时候触发
