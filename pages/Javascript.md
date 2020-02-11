@@ -1135,5 +1135,32 @@ nth-child的关键词是child，它关心的是所有子元素。它会对所有
 简而言之，nth-child影响到了所有child子元素，而nth-of-type则影响到了相应type的子元素。
 
 ```
+##### 100、说说 async / await 的串行和并行
+
+```javascript
+//async和await是es6中的新语法,它的诞生彻底解决了JS回调地狱的问题,在这个语法中,我们可以省去以往的promise语法中.then()的写法
+
+加async修饰的方法有两个作用：
+1.该方法中可以使用await
+2.该方法需要返回一个promise
+
+await可以出现在async修饰的方法中，他的意思表示等待异步任务的执行完毕，await后面需要跟一个promise
+
+比如下面的例子：
+async function request1(){
+    let result1 = await axios("http://localhost:8888/aa")
+    let result2 = await axios("http://localhost:8888/bb")
+}
+async function request2(){
+    let result3 = await axios("http://localhost:8888/cc")
+    let result4 = await axios("http://localhost:8888/dd")
+}
+request1();
+request2();
+//此时request1() 和 request2()这两个方法是并行执行的，request1的执行并不会堵塞当前线程
+//而request1中的两个请求是串行执行的，也就是先必须拿到result1的结果后才能继续获取到result2的结果
+
+因此async/await的结合使用，可以将原来并行执行的异步任务改为串行执行，从而彻底解决js的回调低于的问题
+```
 
  

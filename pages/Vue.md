@@ -197,3 +197,20 @@ https://www.jianshu.com/p/691379025334
   }
   </script>
 ```
+##### 18、vuex中mutatins里面有函数reset_upbox,请问怎么调用?
+
+```
+每一个 Vuex 应用的核心就是 store（仓库）。“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。
+
+//vuex的核心概念和核心概念图：
+1、state - Vuex store实例的根状态对象，用于定义共享的状态变量。
+2、Action -动作，向store发出调用通知，执行本地或者远端的某一个操作（可以理解为store的methods）
+3、Mutations -修改器，它只用于修改state中定义的状态变量。
+4、getter -读取器，外部程序通过它获取变量的具体值，或者在取值前做一些计算（可以认为是store的计算属性）
+```
+
+![1580182113611](D:\前端备课\其他\面试题\面试题-分组\assets\1580182113611.png)
+
+```
+我们需要出发reset_upbox这个mutations的时候，需要通过this.$store.commit('reset_upbox',值)即可
+```

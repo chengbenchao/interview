@@ -312,5 +312,78 @@ col-md		≥992px
 col-lg		≥1200px
 
 ```
+##### 33、html5有什么新特性？移除了哪些元素？如何处理htm5新标签的浏览器兼容性问题？如何区分HTML和html5?
 
-## 
+html5新特性：
+
+```css
+用于绘画canvas元素
+用于媒介回访的video  和 audio 元素
+本地离线存储localStrorage 长期存储数据，浏览器关闭后的数据不丢失；sessionStorage在页面关闭之后自动删除
+语义化更好的内容元素，article，footer,header,nav,section
+表单控件，calender,date,time,email,url,search
+H5的新增接口：地理定位接口、网络访问的接口、读文件的接口、拖拽接口
+```
+
+移除的标签：
+
+```css
+<basefont> 默认字体，不设置字体，以此渲染
+<font> 字体标签
+<center> 水平居中
+<u> 下划线
+<big> 大字体
+<strike> 中横线
+<tt> 文本等宽
+<font> 字体标签
+<s> 删除线标签
+```
+
+新标签的兼容问题：
+
+```css
+//方法一：
+//1、使用静态资源的html5shi包
+<!--[if lt IE9]>
+<script src="http://cdn.static.runoob.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+<![endif]-->
+
+//2、载入之后，初始化新标签的css(解决IE8及以下浏览器下h5新增标签不是块级元素的问题)
+header, section, footer, aside, nav, main, article, figure { display: block; }
+
+//方法二
+IE6/IE7/IE8支持通过document方法产生的标签，利用这一特性让这些浏览器支持HTML5新标签
+```
+
+区分html5 于html
+
+```css
+1、在文档类型声明上区别
+   HTML声明：
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "<http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd>">
+　　<html xmlns="<http://www.w3.org/1999/xhtml>">
+　　
+　HTML5声明：<!doctype html>
+
+2、在结构语义上区分
+	HTML：<div id="header"></div>
+
+	HTML5：在语义上却有很大的优势，提供了一些新的HTML5标签比如: article、footer、header、nav、section，这些通俗易懂
+```
+##### 34、iframe 有哪些优缺点？
+
+```css
+iframe的优点：
+1.iframe能够原封不动的把嵌入的网页展现出来，iframe和主页面是并行加载的
+2.如果有多个网页引用iframe，那么你只需要修改iframe的内容，就可以实现调用的每一个页面内容的更改，方便快捷。
+3.网页如果为了统一风格，头部和版本都是一样的，就可以写成一个页面，用iframe来嵌套，可以增加代码的可重用。
+4.如果遇到加载缓慢的第三方内容如图标和广告，这些问题可以由iframe来解决。
+
+iframe的缺点：
+1.会产生很多页面，不容易管理。
+2.iframe框架结构有时会让人感到迷惑，如果框架个数多的话，可能会出现上下、左右滚动条，会分散访问者的注意力，用户体验度差。
+3.代码复杂，无法被一些搜索引擎索引到，这一点很关键，现在的搜索引擎爬虫还不能很好的处理iframe中的内容，所以使用iframe会不利于搜索引擎优化。
+4.很多的移动设备（PDA 手机）无法完全显示框架，设备兼容性差。
+5.iframe框架页面会增加服务器的http请求，对于大型网站是不可取的。 分析了这么多，现在基本上都是用Ajax来代替iframe，所以iframe已经渐渐的退出了前端开发。
+6.iframe会堵塞主页面的onload事件
+```
